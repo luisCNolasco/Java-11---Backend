@@ -34,7 +34,7 @@ public class RegitrarMatriculaServiceImpl extends CRUDImpl<RegistrarMatricula, I
 
 		Stream<List<DetalleMatricula>> stream = repo.findAll().stream().map(RegistrarMatricula::getDetalle);
 
-		Stream<DetalleMatricula> streamDetail = stream.flatMap(Collection::stream); // list -> list.stream()
+		Stream<DetalleMatricula> streamDetail = stream.flatMap(Collection::stream);
 
 		Map<String, List<DetalleMatricula>> agrupados = streamDetail
 				.collect(Collectors.groupingBy(e -> e.getCurso().getNombre()));
